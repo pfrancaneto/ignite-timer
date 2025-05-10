@@ -16,20 +16,25 @@ import {
 const newCicleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa').readonly(),
   minutesAmount: zod.number().min(5).max(60),
-})
+});
+
+type NewCicleFormValues = zod.infer<typeof newCicleFormValidationSchema>;
 
 export function Home() {
-  const { register, handleSubmit, watch } = useForm({
-    resolver: zodResolver(newCicleFormValidationSchema)
+  const { register, handleSubmit, watch } = useForm<NewCicleFormValues>({
+    resolver: zodResolver(newCicleFormValidationSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0,
+    },
   });
 
-  function handleCreateNewCicle(data: any) {
+  function handleCreateNewCicle(data: NewCicleFormValues) {
     console.log(data);
   }
 
   const task = watch('task');
   const isSubmitingDisable = !task;
-
 
   return (
     <HomeContainer>
@@ -42,7 +47,7 @@ export function Home() {
             id="task"
             placeholder="Dê um nome para o seu projeto"
             list="list-suggestions"
-            />
+          />
 
           <datalist id="list-suggestions">
             <option value="Projeto 1" />
