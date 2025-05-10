@@ -86,6 +86,12 @@ export function Home() {
   const minutes = String(minutesAmount).padStart(2, '0');
   const seconds = String(secondsAmount).padEnd(2, '0');
 
+  useEffect(() => {
+    if (activeCycle) {
+      document.title = `${minutes}:${seconds}`
+    }
+  }, [activeCycle, minutes, seconds]);
+
   const task = watch('task');
   const isSubmitingDisable = !task;
 
