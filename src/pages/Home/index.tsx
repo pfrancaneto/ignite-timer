@@ -111,8 +111,6 @@ export function Home() {
   const task = watch('task');
   const isSubmitingDisable = !task;
 
-  console.log(cycles);
-
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCicle)}>
