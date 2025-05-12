@@ -1,16 +1,17 @@
+import { createContext, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { HandPalm, Play } from '@phosphor-icons/react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as zod from 'zod';
+
+import { CountDown } from './components/CountDown';
+import { NewCycleForm } from './components/NewCycleForm';
 
 import {
   HomeContainer,
   StartCountDownButton,
   StopCountDownButton,
 } from './styles';
-import { createContext, useState } from 'react';
-import { CountDown } from './components/CountDown';
-import { FormProvider, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as zod from 'zod';
-import { NewCycleForm } from './components/NewCycleForm';
 
 interface Cycle {
   id: string;
@@ -74,7 +75,7 @@ export function Home() {
   }
 
   function setSecondsPassed(seconds: number) {
-    setAmountSecondsPassed(seconds)
+    setAmountSecondsPassed(seconds);
   }
 
   function markCurrentCycleAsFineshed() {
@@ -120,7 +121,7 @@ export function Home() {
             markCurrentCycleAsFineshed,
             amountSecondsPassed,
             setSecondsPassed,
-            setCycleAsInitial
+            setCycleAsInitial,
           }}
         >
           <FormProvider {...newCycleForm}>
