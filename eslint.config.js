@@ -22,6 +22,7 @@ export default tseslint.config(
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
+        { allowExportNames: ['loader'] },
       ],
       '@typescript-eslint/no-empty-object-type': 'off',
       quotes: ['error', 'single'],
