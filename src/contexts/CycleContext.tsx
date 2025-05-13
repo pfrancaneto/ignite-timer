@@ -18,6 +18,7 @@ interface CyclesContextValues {
   activeCycle: Cycle | undefined;
   activeCycleId: string | null;
   amountSecondsPassed: number;
+  cycles: Cycle[];
   markCurrentCycleAsFineshed: () => void;
   setSecondsPassed: (seconds: number) => void;
   setCycleAsInitial: () => void;
@@ -77,8 +78,6 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
     setCycles((state) => [...state, newCycle]);
     setActiveCycleId(id);
     setAmountSecondsPassed(0);
-
-    // reset();
   }
 
   function setCycleAsInitial() {
@@ -94,8 +93,9 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
       value={{
         activeCycle,
         activeCycleId,
-        markCurrentCycleAsFineshed,
         amountSecondsPassed,
+        cycles,
+        markCurrentCycleAsFineshed,
         setSecondsPassed,
         setCycleAsInitial,
         interruptedCurrentCycle,
