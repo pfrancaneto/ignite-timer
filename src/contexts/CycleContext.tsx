@@ -41,11 +41,11 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 
   function markCurrentCycleAsFineshed() {
-    dispatch(markFinishedCycleAction);
+    dispatch(markFinishedCycleAction());
   }
 
   function interruptedCurrentCycle() {
-    dispatch(interrupetedCycleAction);
+    dispatch(interrupetedCycleAction());
   }
 
   function createNewCicle(data: CreateCycleData) {
