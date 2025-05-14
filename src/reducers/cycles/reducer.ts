@@ -1,4 +1,4 @@
-import { ActionTypes } from "./actions";
+import { ActionTypes } from './actions';
 
 export interface Cycle {
   id: string;
@@ -32,7 +32,6 @@ export function cycleReducer(state: CyclesState, action: any) {
             return cycle;
           }
         }),
-
         activeCycleId: null,
       };
     case ActionTypes.mark_fineshed_cycle:
@@ -45,7 +44,6 @@ export function cycleReducer(state: CyclesState, action: any) {
             return cycle;
           }
         }),
-
         activeCycleId: null,
       };
     default:
