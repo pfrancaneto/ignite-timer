@@ -17,7 +17,7 @@ import {
 
 const newCicleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa').readonly(),
-  minutesAmount: zod.number().min(1).max(60),
+  minutesAmount: zod.number().min(5).max(60),
 });
 
 type NewCicleFormData = zod.infer<typeof newCicleFormValidationSchema>;
